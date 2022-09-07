@@ -12,17 +12,17 @@ export class UserResolver {
   ) {}
 
   @Query()
-  async user(@Args('id') id: string): Promise<User> {
+  user(@Args('id') id: string): Promise<User> {
     return this.userFinder.run(id);
   }
 
   @Query()
-  async users(): Promise<User[]> {
+  users(): Promise<User[]> {
     return this.allUserFinder.run();
   }
 
   @Mutation((returns) => User)
-  async createUser(@Args('input') input: CreateUserInput): Promise<User> {
+  createUser(@Args('input') input: CreateUserInput): Promise<User> {
     return this.userCreator.run(input);
   }
 }

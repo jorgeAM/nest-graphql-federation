@@ -7,8 +7,4 @@ export class User {
     readonly createdAt: Date = new Date(),
     readonly updatedAt: Date = new Date(),
   ) {}
-
-  sayHi() {
-    console.log('hi');
-  }
 }
