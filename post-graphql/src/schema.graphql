@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreatePostInput {
+  author: String!
+  title: String!
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+}
+
+type Post {
+  author: String!
+  createdAt: Timestamp!
+  id: ID!
+  title: String!
+  updatedAt: Timestamp!
+}
+
+type Query {
+  post(id: String!): Post!
+}
+
+"""
+`Date` type as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
