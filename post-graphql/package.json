@@ -21,6 +21,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@apollo/federation": "^0.36.1",
+    "@apollo/subgraph": "^2.1.1",
     "@nestjs/apollo": "10.1.0",
     "@nestjs/common": "9.0.0",
     "@nestjs/core": "9.0.0",
@@ -37,6 +39,7 @@
     "uuid": "9.0.0"
   },
   "devDependencies": {
+    "@johanblumenberg/ts-mockito": "1.0.34",
     "@nestjs/cli": "9.0.0",
     "@nestjs/schematics": "9.0.0",
     "@nestjs/testing": "9.0.0",

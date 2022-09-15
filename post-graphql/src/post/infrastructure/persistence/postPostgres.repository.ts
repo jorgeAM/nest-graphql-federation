@@ -48,7 +48,19 @@ export class PostPostgresRepository implements IPostRepository {
       [id],
     );
 
-    return res.rows.length === 0 && this.toEntity(res.rows[0]);
+    return res.rows.length !== 0 && this.toEntity(res.rows[0]);
+  }
+
+  async findByAuthor(authorId: string): Promise<Post[]> {
+    const res = await this.client.query<PostPostgresDTO>(
+      'SELECT * FROM posts WHERE author = $1',
+      [authorId],
+    );
+
+    return (
+      res.rows.length !== 0 &&
+      res.rows.map((row: PostPostgresDTO) => this.toEntity(res.rows[0]))
+    );
   }
 
   private toEntity(dto: PostPostgresDTO): Post {

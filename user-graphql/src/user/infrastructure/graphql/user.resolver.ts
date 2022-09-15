@@ -1,4 +1,10 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Query,
+  Resolver,
+  ResolveReference,
+} from '@nestjs/graphql';
 import { User } from '../../domain';
 import { AllUserFinder, UserCreator, UserFinder } from '../../application';
 import { CreateUserInput } from './input';
@@ -24,5 +30,10 @@ export class UserResolver {
   @Mutation((returns) => User)
   createUser(@Args('input') input: CreateUserInput): Promise<User> {
     return this.userCreator.run(input);
+  }
+
+  @ResolveReference()
+  resolveReference(reference: { __typename: string; id: string }) {
+    return this.userFinder.run(reference.id);
   }
 }

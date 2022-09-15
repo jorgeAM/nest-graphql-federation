@@ -1,4 +1,7 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import {
+  ApolloFederationDriver,
+  ApolloFederationDriverConfig,
+} from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { MongoModule } from 'nest-mongodb';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -9,8 +12,8 @@ import { UserModule } from './user/user.module';
 @Module({
   imports: [
     MongoModule.forRoot('mongodb://localhost', 'userGraphql'),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
+    GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+      driver: ApolloFederationDriver,
       typePaths: ['./**/*.graphql'],
     }),
     UserModule,
