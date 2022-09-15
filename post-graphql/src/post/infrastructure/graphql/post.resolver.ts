@@ -35,7 +35,7 @@ export class PostResolver {
   }
 
   @ResolveField((of) => User)
-  user(@Parent() post: Post): any {
+  author(@Parent() post: Post): any {
     return { __typename: 'User', id: post.author };
   }
 }
